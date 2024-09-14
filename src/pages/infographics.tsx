@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import { apiClient } from '../util/axios';
 import { researchlist } from '@/interface/research';
-import { STRAPI_API_URL } from "../app/components/config"
+import { NEXT_PUBLIC_API_URL } from "../app/components/config"
 import Head from 'next/head';
 
 export default function Infographics({ research }: researchlist) {
@@ -36,7 +36,7 @@ export default function Infographics({ research }: researchlist) {
                           <div className="background"></div>
                           <Image
                             className="cars-img-top"
-                            src={reasearchItem?.attributes?.infographics?.data?.attributes?.url ? `${STRAPI_API_URL}${reasearchItem.attributes.infographics.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
+                            src={reasearchItem?.attributes?.infographics?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL}${reasearchItem.attributes.infographics.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
                             width={reasearchItem?.attributes?.infographics?.data?.attributes?.width || 600}
                             height={reasearchItem?.attributes?.infographics?.data?.attributes?.height || 400}
                             alt="..."
@@ -95,7 +95,7 @@ export function InfographicsList({ research }: researchlist) {
                           <div className="background"></div>
                           <Image
                             className="cars-img-top"
-                            src={reasearchItem?.attributes?.infographics?.data?.attributes?.url ? `${STRAPI_API_URL}${reasearchItem.attributes.infographics.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
+                            src={reasearchItem?.attributes?.infographics?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL}${reasearchItem.attributes.infographics.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
                             width={reasearchItem?.attributes?.infographics?.data?.attributes?.width || 600}
                             height={reasearchItem?.attributes?.infographics?.data?.attributes?.height || 400}
                             alt="..."

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Image from "next/image";
 import { apiClient } from '../util/axios';
 import { Staff, stafflist } from '@/interface/staff';
-import { STRAPI_API_URL } from "../app/components/config"
+import { NEXT_PUBLIC_API_URL } from "../app/components/config"
 import Link from 'next/link';
 import Head from 'next/head';
 
@@ -57,7 +57,7 @@ export default function Team({ leaders, members }: stafflist) {
                                 <div className="profile-picture">
                                     <Image
                                         className="w-80 h-40 object-cover"
-                                        src={profile?.attributes?.picture?.data?.attributes?.url ? `${STRAPI_API_URL}${profile.attributes.picture.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
+                                        src={profile?.attributes?.picture?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL}${profile.attributes.picture.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
                                         width="1331"
                                         height="1331"
                                         alt=" "
@@ -82,7 +82,7 @@ export default function Team({ leaders, members }: stafflist) {
                                 <div className="profile-picture">
                                     <Image
                                         className="w-80 h-40 object-cover"
-                                        src={profile?.attributes?.picture?.data?.attributes?.url ? `${STRAPI_API_URL}${profile.attributes.picture.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
+                                        src={profile?.attributes?.picture?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL}${profile.attributes.picture.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
                                         width="1331"
                                         height="1331"
                                         alt=" "
@@ -177,7 +177,7 @@ const Modal = ({ person, onClose }: { person: Staff | null; onClose: () => void 
                                 <div className="profile-picture">
                                     <Image
                                         className="w-80 h-80 object-cover"
-                                        src={person?.attributes?.picture?.data?.attributes?.url ? `${STRAPI_API_URL}${person.attributes.picture.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
+                                        src={person?.attributes?.picture?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL}${person.attributes.picture.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
                                         width="1331"
                                         height="1331"
                                         alt=" "

@@ -14,17 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/icon.ico"/>
       </Head>
       <RootLayout>
-        <div className="blog-header">
-          <Image 
-            src="/blog-image.jpg" 
-            alt="The Youth Print Banner" 
-            width={1200} 
-            height={400} 
-            layout="responsive"
-          />
-          <h1 className="blog-title">Welcome to The Youth Print</h1>
-          <p className="blog-description">Empowering young voices, one story at a time.</p>
-        </div>
+      
         <Component {...pageProps} />
       </RootLayout>
     </ResearchTagsProvider>

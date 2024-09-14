@@ -26,7 +26,7 @@ const nextConfig = {
   },
   
   env: {
-    STRAPI_API_URL: process.env.STRAPI_API_URL,
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     OCP_APIM_SUBSCRIPTION_KEY: process.env.OCP_APIM_SUBSCRIPTION_KEY,
   },
 

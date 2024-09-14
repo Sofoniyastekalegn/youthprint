@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
-import { STRAPI_API_URL } from "../../app/components/config"
+import { NEXT_PUBLIC_API_URL } from "../../app/components/config"
 import { stafflist } from '@/interface/staff';
 
 interface Item {
@@ -50,7 +50,7 @@ const ItemList: React.FC<ItemListProps> = ({ items, baseLink, initialVisibleItem
                     <div className="background"></div>
                     <Image
                       className='w-100'
-                      src={STRAPI_API_URL + item.attributes?.headerImage.data.attributes.url}
+                      src={NEXT_PUBLIC_API_URL + item.attributes?.headerImage.data.attributes.url}
                       width='1313'
                       height='738'
                       alt="..."

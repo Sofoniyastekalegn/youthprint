@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import { apiClient } from '../util/axios';
 import { EventlistProps } from "@/interface/events";
-import {STRAPI_API_URL} from "../app/components/config"
+import {NEXT_PUBLIC_API_URL} from "../app/components/config"
 import { BlogPageProps } from '@/interface/blog';
 import ItemList from '@/app/components/ItemList';
 

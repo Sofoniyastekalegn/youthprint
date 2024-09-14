@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from 'next/link';
 import { apiClient } from '../util/axios';
 import { EventlistProps } from "@/interface/events";
-import { STRAPI_API_URL } from "../app/components/config"
+import { NEXT_PUBLIC_API_URL } from "../app/components/config"
 import ItemList from '@/app/components/ItemList';
 import Head from 'next/head';
 
@@ -30,7 +30,7 @@ export default function Events({ events }: EventlistProps) {
                 <div className="background"></div>
                 <Image
                   className='card-img-top"'
-                  src={STRAPI_API_URL + events[0].attributes.headerImage.data.attributes.url}
+                  src={NEXT_PUBLIC_API_URL + events[0].attributes.headerImage.data.attributes.url}
                   width='1313'
                   height='738'
                   alt="..."
