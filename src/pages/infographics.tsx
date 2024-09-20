@@ -20,9 +20,9 @@ export default function Infographics({ research }: researchlist) {
       </Head>
       <div className="body-container">
         <div className="content-banner">
-          <h5 className=" mb-4"> Infographics </h5>
+          <h5 className=" pt-5 mb-4"> Infographics </h5>
         </div>
-        <div className="">
+        <div className="pt-5">
           <div id="children_append" className="row row-cols-1 row-cols-md-3 g-4">
             {research.slice(0, visibleEvents).map((reasearchItem, index) => {
               // Calculate the correct index
@@ -45,7 +45,7 @@ export default function Infographics({ research }: researchlist) {
                         </div>
                       </div>
                       <div className="col-md-7">
-                        <div className="card-body ps-0 ps-md-4 pt-4 pt-md-0">
+                        <div className="card-body ps-0 ps-0 ps-md-4 pt-4 pt-md-0">
                           <div className="card-text card-date pb-2">{reasearchItem.attributes.date}</div>
                           <h6 className="card-subtitle mb-2">{reasearchItem.attributes.title}</h6>
                           <p className="card-text mb-3">{reasearchItem.attributes.summary}</p>

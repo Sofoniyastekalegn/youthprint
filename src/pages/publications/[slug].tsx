@@ -42,7 +42,7 @@ export default function Publication({ data }: bloglist) {
 export const getServerSideProps: GetServerSideProps<bloglist, Params> = async (context: GetServerSidePropsContext<Params>): Promise<GetServerSidePropsResult<bloglist>> => {
     const { slug } = context.params!;
     try {
-        const blogResponse = await apiClient.get(`/api/publications?filters[research_tag][slug][$eq]=${encodeURIComponent(slug)}&sort[0]=date:desc&populate=*`);
+        const blogResponse = await apiClient.get(`/api/blogs?filters[research_tag][slug][$eq]=${encodeURIComponent(slug)}&sort[0]=date:desc&populate=*`);
 
         if (blogResponse.data.data.length === 0) {
             return { notFound: true };

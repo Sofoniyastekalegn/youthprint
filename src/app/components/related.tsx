@@ -22,7 +22,7 @@ const Related = ({ blogs, events, infographics, NEXT_PUBLIC_API_URL }: ListProps
     const isBlogContent = !!blogs;
     const isEventContent = !!events;
     const items = isBlogContent ? blogs : isEventContent ? events : infographics;
-    const linkPrefix = isBlogContent ? '/publication/' : isEventContent ? '/event-details/' : '/infographics/';
+    const linkPrefix = isBlogContent ? '/blogs/' : isEventContent ? '/event-details/' : '/infographics/';
 
     // Ensure items are available
     if (!items) return null;

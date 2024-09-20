@@ -12,11 +12,14 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
+
   const tags = useResearchTags();
   return (
     <div>
       <Header researchTags={tags || []} />
       {children}
+      <body className="flex flex-col min-h-screen"></body>
+      
       <Footer />
     </div>
   );

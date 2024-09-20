@@ -319,7 +319,7 @@ export default function Header({ researchTags }: HeaderProps) {
                     <Link className="dropdown-item" href="/infographics" onClick={toggleMediaDropdown}>Infographics</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item" href="/publications/blogs-and-articles" onClick={toggleMediaDropdown}>Blogs</Link>
+                    <Link className="dropdown-item" href="/blogs" onClick={toggleMediaDropdown}>Blogs</Link>
                   </li>
                   <li className=''>
                     <Link className="dropdown-item" href="/" onClick={toggleMediaDropdown}>Podcasts</Link>
@@ -328,13 +328,13 @@ export default function Header({ researchTags }: HeaderProps) {
                     <Link className="dropdown-item" href="/" onClick={toggleMediaDropdown}>Factsheets</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item-small dropdown-item" href="/blogs" onClick={toggleMediaDropdown}>Newsletters</Link>
+                    <Link className="dropdown-item" href="/blogs" onClick={toggleMediaDropdown}>Newsletters</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item-small dropdown-item" href="/" onClick={toggleMediaDropdown}>Annual Reports</Link>
+                    <Link className="dropdown-item" href="/" onClick={toggleMediaDropdown}>Annual Reports</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item-small dropdown-item" href="/" onClick={toggleMediaDropdown}>Achievements &<br /> Impacts</Link>
+                    <Link className="dropdown-item" href="/" onClick={toggleMediaDropdown}>Achievements &<br /> Impacts</Link>
                   </li>
 
                 </ul>

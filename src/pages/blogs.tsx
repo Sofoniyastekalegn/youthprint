@@ -33,6 +33,8 @@ export default function Events({ allBlogs }: BlogPageProps) {
 export async function getStaticProps() {
   try {
     const response = await apiClient.get("/api/blogs?sort[0]=date:desc&populate=*");
+    console.log("--------------------Blog Response----------")
+    console.log(response.data.data)
     const allBlogs = response?.data?.data;
 
     return {

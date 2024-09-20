@@ -21,11 +21,13 @@ export default function Events({ events }: EventlistProps) {
       </Head>
       <div className="body-container">
         <div className="content-banner">
-          <h5 className=" mb-4"> Events </h5>
+          <h5 className="pt-5 mb-4"> Events </h5>
         </div>
         <Link className="card mt-5" href={`/event-details/${events[0].attributes.slug}`}>
+         <div id="children_append" className="row row-cols-1 row-cols-md-3 g-4"></div>
+          <div className='col-md-12 col-lg 6'></div>
           <div className="row g-0">
-            <div className="col-md-6">
+            <div className="col-md-5">
               <div className="hover-container">
                 <div className="background"></div>
                 <Image
@@ -37,8 +39,8 @@ export default function Events({ events }: EventlistProps) {
                 />
               </div>
             </div>
-            <div className="col-md-5">
-              <div className="card-body ps-0 ps-md-5 pt-4 pt-md-5">
+            <div className="col-md-7">
+              <div className="card-body ps-0 ps-0 ps-md-4 pt-4 pt-md-0">
                 <div className="card-text card-date pb-2">{events[0]?.attributes.date}</div>
                 <h6 className="card-subtitle mb-3">{events[0]?.attributes.title}</h6>
                 <p className="card-text mb-3">
