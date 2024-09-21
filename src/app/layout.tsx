@@ -6,21 +6,22 @@ import { ReactNode, useContext } from 'react';
 import { useResearchTags } from "./contexts/ResearchTagsContext";
 
 
-
 interface RootLayoutProps {
   children: ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-
   const tags = useResearchTags();
+
   return (
-    <div>
-      <Header researchTags={tags || []} />
-      {children}
-      <body className="flex flex-col min-h-screen"></body>
-      
-      <Footer />
-    </div>
+    <html lang="en">
+      <body className="flex flex-col min-h-screen">
+        <Header researchTags={tags || []} />
+        <main className="flex-grow">
+          {children}
+        </main>
+        <Footer />
+      </body>
+    </html>
   );
 }
