@@ -12,7 +12,7 @@ interface HeaderProps {
 }
 
 export default function Header({ researchTags }: HeaderProps) {
-  
+
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mediaDropdownOpen, setMediaDropdownOpen] = useState(false);
@@ -32,24 +32,24 @@ export default function Header({ researchTags }: HeaderProps) {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-        const isInsideDropdown = 
-            menuRef.current && menuRef.current.contains(event.target as Node) || 
-            dropdownRef.current.some(ref => ref && ref.contains(event.target as Node));
-        if (!isInsideDropdown) {
-            closeAllDropdowns();
-        }
+      const isInsideDropdown =
+        menuRef.current && menuRef.current.contains(event.target as Node) ||
+        dropdownRef.current.some(ref => ref && ref.contains(event.target as Node));
+      if (!isInsideDropdown) {
+        closeAllDropdowns();
+      }
     }
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-}, []);
+  }, []);
 
-  const toggleMenu = () => { 
+  const toggleMenu = () => {
     closeAllDropdowns('menu'),
-    setIsOpen(!isOpen); 
+      setIsOpen(!isOpen);
   };
 
-  const closeAllDropdowns = (exclude?: string, multiple? : boolean) => {
+  const closeAllDropdowns = (exclude?: string, multiple?: boolean) => {
     console.log(exclude)
     if (exclude !== 'dropdownOpen') setDropdownOpen(false);
     if (exclude !== 'mediaDropdownOpen') setMediaDropdownOpen(false);
@@ -59,18 +59,18 @@ export default function Header({ researchTags }: HeaderProps) {
     if (exclude !== 'sdgDropdownOpen') setSdgDropdownOpen(false);
     if (exclude !== 'agendaDropdownOpen') setAgendaDropdownOpen(false);
     if (exclude !== 'impactDropdownOpen') setImpactDropdownOpen(false);
-     if (exclude !== 'menu'  && !multiple) setIsOpen(false);
+    if (exclude !== 'menu' && !multiple) setIsOpen(false);
     console.log(aboutDropdownOpen)
   };
 
   const togglePublicationsDropdown = () => {
-    closeAllDropdowns('dropdownOpen',  true),
-    
+    closeAllDropdowns('dropdownOpen', true),
+
       setDropdownOpen(!dropdownOpen);
   };
 
   const toggleMediaDropdown = () => {
-    closeAllDropdowns('mediaDropdownOpen' , true),
+    closeAllDropdowns('mediaDropdownOpen', true),
       setMediaDropdownOpen(!mediaDropdownOpen);
   };
 
@@ -319,7 +319,7 @@ export default function Header({ researchTags }: HeaderProps) {
                     <Link className="dropdown-item" href="/infographics" onClick={toggleMediaDropdown}>Infographics</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item" href="/blogs" onClick={toggleMediaDropdown}>Blogs</Link>
+                    <Link className="dropdown-item" href="/publications/blogs-and-articles" onClick={toggleMediaDropdown}>Blogs</Link>
                   </li>
                   <li className=''>
                     <Link className="dropdown-item" href="/" onClick={toggleMediaDropdown}>Podcasts</Link>
@@ -328,13 +328,13 @@ export default function Header({ researchTags }: HeaderProps) {
                     <Link className="dropdown-item" href="/" onClick={toggleMediaDropdown}>Factsheets</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item" href="/blogs" onClick={toggleMediaDropdown}>Newsletters</Link>
+                    <Link className="dropdown-item-small dropdown-item" href="/blogs" onClick={toggleMediaDropdown}>Newsletters</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item" href="/" onClick={toggleMediaDropdown}>Annual Reports</Link>
+                    <Link className="dropdown-item-small dropdown-item" href="/" onClick={toggleMediaDropdown}>Annual Reports</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item" href="/" onClick={toggleMediaDropdown}>Achievements &<br /> Impacts</Link>
+                    <Link className="dropdown-item-small dropdown-item" href="/" onClick={toggleMediaDropdown}>Achievements &<br /> Impacts</Link>
                   </li>
 
                 </ul>
@@ -467,7 +467,7 @@ export default function Header({ researchTags }: HeaderProps) {
                     </svg>
                   </button>
                   {agendaDropdownOpen && (
-                    <ul  className="pl-42">
+                    <ul className="pl-42">
                       <li>
                         <Link className="side-dropdown" href="/" onClick={togglePrioritiesDropdown}>Young Africans Shaping Global Narratives</Link>
                       </li>
@@ -538,7 +538,7 @@ export default function Header({ researchTags }: HeaderProps) {
                 if (el) {
                   dropdownRef.current[0] = el;
                 }
-              }}className="pl-42  h-64 overflow-y-auto">
+              }} className="pl-42  h-64 overflow-y-auto">
                 <li>
                   <Link className="mobile-dropdown-item" href="/" onClick={toggleMenu}>Press Release</Link>
                 </li>

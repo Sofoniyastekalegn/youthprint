@@ -18,7 +18,9 @@ interface Item {
     title: string;
     summary: string;
     authors?: stafflist;
-  }| null;
+  
+  } | null;
+  
 }
 
 interface ItemListProps {
@@ -35,6 +37,7 @@ const ItemList: React.FC<ItemListProps> = ({ items, baseLink, initialVisibleItem
   };
 
   if (!items || items.length === 0) {
+
     return <div>No items available.</div>;
   }
 
@@ -50,7 +53,11 @@ const ItemList: React.FC<ItemListProps> = ({ items, baseLink, initialVisibleItem
                     <div className="background"></div>
                     <Image
                       className='w-100'
-                      src={NEXT_PUBLIC_API_URL + item.attributes?.headerImage?.data?.attributes.url}
+                      
+                      
+                      src={item.attributes?.headerImage?.data?.attributes?.url ? NEXT_PUBLIC_API_URL + item.attributes?.headerImage?.data?.attributes?.url : '/next.svg'}
+
+
                       width='1313'
                       height='738'
                       alt="..."
@@ -60,7 +67,7 @@ const ItemList: React.FC<ItemListProps> = ({ items, baseLink, initialVisibleItem
                 <div className="col-md-7">
                   <div className="card-body ps-0 ps-md-4 pt-4 pt-md-0">
                     <div className="card-text card-date pb-2">{item.attributes?.date}  {/* &nbsp; */}
-                      {item.attributes?.authors? (
+                      {item.attributes?.authors ? (
                         <>
                           by &nbsp;
                           {item?.attributes.authors?.data?.map((author, index) => (

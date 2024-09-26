@@ -7,7 +7,7 @@ import twitterlogo from "../assets/twitterlogo.png"
 
 export default function Footer() {
     return (
-        <footer className="mt-auto">
+        <footer>
             <div className='top-section'>
                 <div className='container-footer'>
                     <div className='row'>
@@ -27,7 +27,7 @@ export default function Footer() {
 
                                 </li>
                                 <li>
-                                    <Link href="/blogs">Blogs & Articles</Link>
+                                    <Link href="/publications/blogs-and-articles">Blogs & Articles</Link>
                                 </li>
                             </ul>
                         </div>

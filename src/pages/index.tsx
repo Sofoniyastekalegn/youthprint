@@ -113,7 +113,7 @@ export default function Home({ weblog, blogs, matchingBlogIndex, researchTags }:
                                 <div id="news_append" className="row g-4">
                                     {blogs.slice(0, 3).map((blog, index) => (
                                         <div key={index} className="col-12">
-                                            <Link className="card" href={`/blogs/${blog.attributes.slug}`}>
+                                            <Link className="card" href={`/publication/${blog.attributes.slug}`}>
                                                 <div className="row g-4">
                                                     <div className="col-md-5">
                                                         <div className="hover-container">

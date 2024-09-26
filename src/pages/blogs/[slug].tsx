@@ -57,7 +57,7 @@ export default function Blog({ blog, allBlogs }: BlogPageProps) {
                 <div className="container-wide">
                     <div className="img-container img-container-large fadeInOpacity active">
                         <Image
-                            src={blog?.attributes?.headerImage?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL}${blog.attributes.headerImage.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
+                            src={blog?.attributes?.headerImage?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL}${blog?.attributes?.headerImage?.data?.attributes?.url}` : '/path/to/placeholder-image.jpg'}
                             alt="Header Image"
                             layout="fill"
                             objectFit="cover"
@@ -80,7 +80,7 @@ export default function Blog({ blog, allBlogs }: BlogPageProps) {
                                         <div style={{ float: 'left' }}>By </div>
                                         <div style={{ marginLeft: '25px' }}>
 
-                                            {blog?.attributes.authors.data?.map((author, index) => (
+                                            {blog?.attributes?.authors?.data?.map((author, index) => (
                                                 <div key={index} className="d-inline-block mb-2">
 
                                                     <Link href={`/author/${author.attributes.slug}`} className='side-box.link'> {author.attributes.name}</Link>
@@ -108,13 +108,13 @@ export default function Blog({ blog, allBlogs }: BlogPageProps) {
                             </div>
                         </div>
                         <div className="col-lg-6 order-1 order-sm-1 order-md-1 order-lg-2 order-xl-2 col-white-block">
-                            <ArticleContent content={content} title={blog?.attributes.title} summary={blog?.attributes.summary} />
+                            <ArticleContent content={content} title={blog?.attributes?.title} summary={blog?.attributes?.summary} />
                         </div>
 
                     </div>
-                    {blog?.attributes.fileLink ? (
+                    {blog?.attributes?.fileLink ? (
                         <div className='text-center'>
-                            <a className="btn btn-success btn-wide mb-3" href={blog?.attributes.fileLink} target="_blank"> Download Policy Brief 188 PDF </a>
+                            <a className="btn btn-success btn-wide mb-3" href={blog?.attributes?.fileLink} target="_blank"> Download Policy Brief 188 PDF </a>
 
                         </div>
                     ) : null}
@@ -126,7 +126,7 @@ export default function Blog({ blog, allBlogs }: BlogPageProps) {
                         <h6>Related content</h6>
                     </div>
                     <div className="mb-4">
-                        {blog?.attributes.topic_tags.data.map((tag, index) => (
+                        {blog?.attributes?.topic_tags?.data.map((tag, index) => (
                             <Link key={index} className="btn btn-success btn-sm me-2 mb-3" href={`/relatedtopic/${'publication'}/${encodeURIComponent(tag.attributes.slug)}`}>
                                 {tag.attributes.title}
                             </Link>
@@ -145,7 +145,7 @@ export default function Blog({ blog, allBlogs }: BlogPageProps) {
 export const getServerSideProps: GetServerSideProps<BlogProps, Params> = async (context: GetServerSidePropsContext<Params>): Promise<GetServerSidePropsResult<BlogProps>> => {
     const { slug } = context.params!;
     try {
-        const blogResponse = await apiClient.get(`/api/publications?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=*`);
+        const blogResponse = await apiClient.get(`/api/blogs?filters[slug][$eq]=${encodeURIComponent(slug)}&populate=*`);
 
         if (blogResponse.data.data.length === 0) {
             return { notFound: true };
@@ -153,7 +153,7 @@ export const getServerSideProps: GetServerSideProps<BlogProps, Params> = async (
 
         const blog = blogResponse.data.data[0] as Blog;
 
-        const allBlogsResponse = await apiClient.get(`/api/publications?populate=*`);
+        const allBlogsResponse = await apiClient.get(`/api/blogs?populate=*`);
         const allBlogs = allBlogsResponse.data.data as Blog[];
 
         return {
