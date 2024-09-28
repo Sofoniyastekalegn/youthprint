@@ -108,8 +108,16 @@ export default function Header({ researchTags }: HeaderProps) {
 
 
   return (
-    <div ref={menuRef} className="bg-nav sticky-nav fixed-top">
-      <nav className="navbar navbar-light">
+    <div className="print-only">
+      <div className="container"></div>
+    
+
+      
+      
+    
+    <div ref={menuRef} className="bg-nav no-print">
+      </div>
+      <nav className="navbar navbar-expand-lg  navbar-light sticky-nav">
         <Link className="navbar-brand" href="/">
           <Image className='logo' src={logo} alt={'IMAGE'} />
         </Link>
@@ -117,7 +125,7 @@ export default function Header({ researchTags }: HeaderProps) {
         <div className="hidden md-flex nav-bar-collapse">
           <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
             <li className=''>
-              <Link className='nav-link' href="/publications/blogs-and-articles">
+              <Link className='nav-link' href="/publications/blogs">
                 News & Insights</Link>
             </li>
 
@@ -201,7 +209,7 @@ export default function Header({ researchTags }: HeaderProps) {
                     {sdgDropdownOpen && (
                       <ul className="absolute left-full top-0 mt-2 pl-4 border border-gray-200 bg-white shadow-lg">
                         <li>
-                          <Link className="side-dropdown" href="/" onClick={toggleSdgDropdown}>Climate Chnage (SDG 13)</Link>
+                          <Link className="side-dropdown" href="/" onClick={toggleSdgDropdown}>Climate Change (SDG 13)</Link>
                         </li>
                         <li>
                           <Link className="side-dropdown" href="/" onClick={togglePrioritiesDropdown}>Envrionemnt (SDG 6)</Link>
@@ -319,7 +327,7 @@ export default function Header({ researchTags }: HeaderProps) {
                     <Link className="dropdown-item" href="/infographics" onClick={toggleMediaDropdown}>Infographics</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item" href="/publications/blogs-and-articles" onClick={toggleMediaDropdown}>Blogs</Link>
+                    <Link className="dropdown-item" href="/publications/blogs" onClick={toggleMediaDropdown}>Blogs</Link>
                   </li>
                   <li className=''>
                     <Link className="dropdown-item" href="/" onClick={toggleMediaDropdown}>Podcasts</Link>
@@ -328,13 +336,13 @@ export default function Header({ researchTags }: HeaderProps) {
                     <Link className="dropdown-item" href="/" onClick={toggleMediaDropdown}>Factsheets</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item-small dropdown-item" href="/blogs" onClick={toggleMediaDropdown}>Newsletters</Link>
+                    <Link className=" dropdown-item" href="/blogs" onClick={toggleMediaDropdown}>Newsletters</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item-small dropdown-item" href="/" onClick={toggleMediaDropdown}>Annual Reports</Link>
+                    <Link className=" dropdown-item" href="/" onClick={toggleMediaDropdown}>Annual Reports</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item-small dropdown-item" href="/" onClick={toggleMediaDropdown}>Achievements &<br /> Impacts</Link>
+                    <Link className=" dropdown-item" href="/" onClick={toggleMediaDropdown}>Achievements &<br /> Impacts</Link>
                   </li>
 
                 </ul>
@@ -358,7 +366,7 @@ export default function Header({ researchTags }: HeaderProps) {
       {/* Mobile */}
       <div ref={menuRef} className={`md-flex:hidden ${isOpen ? 'block' : 'hidden'} navbar-collapse`}>
         <ul className="navbar-dropdown ms-auto mb-2 mb-lg-0 h-64 overflow-y-auto">
-          <li className="nav-item"><Link className="nav-link text-[20px]" href="/publications/blogs-and-articles" onClick={toggleMenu}> News & Insights</Link></li>
+          <li className="nav-item"><Link className="nav-link text-[20px]" href="/publications/blogs" onClick={toggleMenu}> News & Insights</Link></li>
 
           <li className="nav-item relative">
             <button className="nav-link inline-flex items-center text-[20px]" onClick={toggleAboutDropdown}>

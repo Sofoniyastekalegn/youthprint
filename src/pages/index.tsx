@@ -28,7 +28,7 @@ export default function Home({ weblog, blogs, matchingBlogIndex, researchTags }:
             <div className="body-container">
                 <div className='container-full mt-20'>
                     <div className='row'>
-                        <div className="col-md-6 home-left fadInLeft">
+                        <div className="col-md-6 home-left fadInLeft active">
                             <h4 className="home-intro">
                                 <div className="home-intro-text">
                                     {weblog?.headertext}
@@ -37,7 +37,7 @@ export default function Home({ weblog, blogs, matchingBlogIndex, researchTags }:
                             </h4>
                         </div>
                         <div className="col-md-6">
-                            <div className="home-banner video fadeInOpacity active relative w-full h-full ">
+                            <div className="home-banner video fadeInOpacity active">
                                 {weblog?.headervid?.data?.attributes.url ? (
                                     <video
                                         className="absolute top-0 left-0 w-full h-full object-cover video-js vjs-tech"
@@ -113,7 +113,7 @@ export default function Home({ weblog, blogs, matchingBlogIndex, researchTags }:
                                 <div id="news_append" className="row g-4">
                                     {blogs.slice(0, 3).map((blog, index) => (
                                         <div key={index} className="col-12">
-                                            <Link className="card" href={`/publication/${blog.attributes.slug}`}>
+                                            <Link className="card" href={`/blogs/${blog.attributes.slug}`}>
                                                 <div className="row g-4">
                                                     <div className="col-md-5">
                                                         <div className="hover-container">

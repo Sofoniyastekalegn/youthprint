@@ -127,7 +127,7 @@ export default function Blog({ blog, allBlogs }: BlogPageProps) {
                     </div>
                     <div className="mb-4">
                         {blog?.attributes?.topic_tags?.data.map((tag, index) => (
-                            <Link key={index} className="btn btn-success btn-sm me-2 mb-3" href={`/relatedtopic/${'publication'}/${encodeURIComponent(tag.attributes.slug)}`}>
+                            <Link key={index} className="btn btn-success btn-sm me-2 mb-3" href={`/relatedtopic/${'blogs'}/${encodeURIComponent(tag.attributes.slug)}`}>
                                 {tag.attributes.title}
                             </Link>
                         ))}

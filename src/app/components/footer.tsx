@@ -26,8 +26,8 @@ export default function Footer() {
                                     </Link>
 
                                 </li>
-                                <li>
-                                    <Link href="/publications/blogs-and-articles">Blogs & Articles</Link>
+                                <li>]
+                                    <Link href="/publications/blogs">Blogs & Articles</Link>
                                 </li>
                             </ul>
                         </div>
