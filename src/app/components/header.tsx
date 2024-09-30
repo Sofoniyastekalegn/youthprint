@@ -319,7 +319,7 @@ export default function Header({ researchTags }: HeaderProps) {
                     <Link className="dropdown-item" href="/infographics" onClick={toggleMediaDropdown}>Infographics</Link>
                   </li>
                   <li className=''>
-                    <Link className="dropdown-item" href="/publications/blogs-and-articles" onClick={toggleMediaDropdown}>Blogs</Link>
+                    <Link className="dropdown-item" href="/blogs" onClick={toggleMediaDropdown}>Blogs</Link>
                   </li>
                   <li className=''>
                     <Link className="dropdown-item" href="/" onClick={toggleMediaDropdown}>Podcasts</Link>
