@@ -563,15 +563,15 @@ export default function Header({ researchTags }: HeaderProps) {
                 </li>
 
                 <li>
-                  <Link className=" dropdown-item-small mobile-dropdown-item " href="/" onClick={toggleMenu}>Newsletter</Link>
+                  <Link className=" mobile-dropdown-item " href="/" onClick={toggleMenu}>Newsletter</Link>
                 </li>
 
                 <li>
-                  <Link className="dropdown-item-small mobile-dropdown-item" href="/" onClick={toggleMenu}>Annual reports</Link>
+                  <Link className="mobile-dropdown-item" href="/" onClick={toggleMenu}>Annual reports</Link>
                 </li>
 
                 <li>
-                  <Link className="dropdown-item-small mobile-dropdown-item" href="/" onClick={toggleMenu}>Achievments & <br /> Impacts</Link>
+                  <Link className="mobile-dropdown-item" href="/" onClick={toggleMenu}>Achievments & <br /> Impacts</Link>
                 </li>
 
 

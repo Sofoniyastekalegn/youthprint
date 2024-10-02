@@ -4,6 +4,8 @@ import RootLayout from '../app/layout'
 import { ResearchTagsProvider } from '@/app/contexts/ResearchTagsContext'
 import Head from 'next/head'
 import Image from 'next/image'
+import App from 'next/app'
+import { apiClient } from '@/util/axios'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -20,5 +22,20 @@ function MyApp({ Component, pageProps }: AppProps) {
     </ResearchTagsProvider>
   )
 }
+
+MyApp.getInitialProps = async (appContext: any) => {
+  const appProps = await App.getInitialProps(appContext);
+
+  // Fetch research tags from the API
+  let researchTags = [];
+  try {
+    const tagsResponse = await apiClient.get("/api/research-tags?populate=*");
+    researchTags = tagsResponse.data.data; // Adjust based on your API response structure
+  } catch (error) {
+    console.error("Failed to fetch research tags:", error);
+  }
+
+  return { ...appProps, pageProps: { ...appProps.pageProps, researchTags } };
+};
 
 export default MyApp

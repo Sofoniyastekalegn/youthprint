@@ -23,9 +23,9 @@ export default function Events({ allBlogs }: BlogPageProps) {
   }
 
   return (
-    <div className="body-container">
+    <div className="content-container">
       <div className="content-banner">
-        <h5 className=" mb-4"> Blogs </h5>
+        <h5 className=" pt-5 mb-4"> Blogs </h5>
       </div>
 
       <ItemList items={allBlogs} baseLink="/blog" initialVisibleItems={4} />
