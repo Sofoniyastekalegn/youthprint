@@ -9,7 +9,7 @@ import Link from 'next/link';
 import Related from '@/app/components/related'; // Ensure the correct import
 import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { STRAPI_API_URL } from "../../app/components/config"
+import { NEXT_PUBLIC_API_URL } from "../../app/components/config"
 import Head from 'next/head';
 
 interface Params extends ParsedUrlQuery {
@@ -57,7 +57,7 @@ export default function Blog({ blog, allBlogs }: BlogPageProps) {
                 <div className="container-wide">
                     <div className="img-container img-container-large fadeInOpacity active">
                         <Image
-                            src={blog?.attributes?.headerImage?.data?.attributes?.url ? `${STRAPI_API_URL}${blog.attributes.headerImage.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
+                            src={blog?.attributes?.headerImage?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL}${blog.attributes.headerImage.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
                             alt="Header Image"
                             layout="fill"
                             objectFit="cover"
@@ -134,7 +134,7 @@ export default function Blog({ blog, allBlogs }: BlogPageProps) {
 
                     </div>
 
-                    <Related blogs={relatedBlogs} STRAPI_API_URL={STRAPI_API_URL || ''} />
+                    <Related blogs={relatedBlogs} NEXT_PUBLIC_API_URL={NEXT_PUBLIC_API_URL || ''} />
                 </div>
             </div></>
     );

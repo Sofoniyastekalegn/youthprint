@@ -3,7 +3,7 @@ import { apiClient } from '../util/axios';
 import { extractLastIdFromUrl } from '../app/components/videos'
 import { videosinfo } from '@/interface/videos';
 import Link from 'next/link';
-import { STRAPI_API_URL } from '@/app/components/config';
+import { NEXT_PUBLIC_API_URL } from '@/app/components/config';
 import youtubeLogo from "../app/assets/youtube.png"
 import Image from "next/image";
 import ItemList from '@/app/components/ItemList';
@@ -61,7 +61,7 @@ export default function Videos({ videos }: VideosProps) {
 
                                             {/* <Image
                       className='w-100'
-                      src={STRAPI_API_URL + item.attributes.headerImage.data.attributes.url}
+                      src={NEXT_PUBLIC_API_URL + item.attributes.headerImage.data.attributes.url}
                       width='1313'
                       height='738'
                       alt="..."
@@ -136,7 +136,7 @@ export function Videoslist({ videos }: VideosProps) {
 
                                             {/* <Image
                       className='w-100'
-                      src={STRAPI_API_URL + item.attributes.headerImage.data.attributes.url}
+                      src={NEXT_PUBLIC_API_URL + item.attributes.headerImage.data.attributes.url}
                       width='1313'
                       height='738'
                       alt="..."

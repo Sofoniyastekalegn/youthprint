@@ -1,4 +1,5 @@
 // Import necessary libraries
+// Import necessary libraries
 import Image from "next/image";
 import { apiClient } from "../util/axios";
 import { HomeProps } from "@/interface/home";
@@ -7,7 +8,7 @@ import { videosinfo, videosAttributes } from "@/interface/videos";
 import DevelopmentPartners from "../app/components/partners"
 import Videos from "@/app/components/videos";
 import { Blog } from "@/interface/blog";
-import { STRAPI_API_URL } from "../app/components/config"
+import { NEXT_PUBLIC_API_URL } from "../app/components/config"
 import { ResearchTagsContext, ResearchTagsProvider } from "@/app/contexts/ResearchTagsContext";
 import logger from '../util/logger'
 import Head from "next/head";
@@ -40,17 +41,25 @@ export default function Home({ weblog, blogs, matchingBlogIndex, researchTags }:
                             </h4>
                         </div>
                         <div className="col-md-6">
-                            <div className="home-banner video fadeInOpacity active relative w-full h-full ">
-                                <video
-                                    className="absolute top-0 left-0 w-full h-full object-cover video-js vjs-tech"
-                                    preload="auto"
-                                    src={STRAPI_API_URL + weblog?.headervid?.data?.attributes.url}
-                                    autoPlay
-                                    loop
-                                    muted
-                                    data-setup='{"fluid": true}'
-                                ></video>
-                            </div>
+                        <div className="home-banner video fadeInOpacity active relative w-full h-full ">
+    {weblog?.headervid?.data?.attributes.url ? (
+        <video
+            className="absolute top-0 left-0 w-full h-full object-cover video-js vjs-tech"
+            preload="auto"
+            src={`${NEXT_PUBLIC_API_URL}${weblog.headervid.data.attributes.url}`}
+            autoPlay
+            loop
+            muted
+            data-setup='{"fluid": true}'
+            onError={(e) => {
+                console.error("Video loading error:", e);
+                console.log("Video URL:", `${NEXT_PUBLIC_API_URL}${weblog.headervid.data.attributes.url}`);
+            }}
+        ></video>
+    ) : (
+        <p>No video available</p>
+    )}
+</div>
                         </div>
                     </div>
                 </div>
@@ -71,7 +80,7 @@ export default function Home({ weblog, blogs, matchingBlogIndex, researchTags }:
                                         </div>
                                         <Image
                                             className="card-img-top"
-                                            src={matchingBlog?.attributes?.headerImage?.data?.attributes?.url ? `${STRAPI_API_URL || ""}${matchingBlog.attributes.headerImage.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
+                                            src={matchingBlog?.attributes?.headerImage?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL || ""}${matchingBlog.attributes.headerImage.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
                                             width={matchingBlog?.attributes?.headerImage?.data?.attributes?.width || 1331}
                                             height={matchingBlog?.attributes?.headerImage?.data?.attributes?.height || 1331}
                                             alt={matchingBlog?.attributes?.headerImage?.data?.attributes?.alternativeText || 'Default Alt Text'}
@@ -80,7 +89,7 @@ export default function Home({ weblog, blogs, matchingBlogIndex, researchTags }:
                                     </div>
 
                                     <div className="row">
-                                        <div className="col-md-2"></div>
+                                        <div className="col--2"></div>
 
                                         <div className="col-md-8">
                                             <div className="card-date pb-2">
@@ -95,7 +104,7 @@ export default function Home({ weblog, blogs, matchingBlogIndex, researchTags }:
                                             <h6 className="card-subtitle mb-3"> {weblog?.pinnedPublication?.data?.attributes.title}</h6>
                                             <p className="card-text mb-3">
                                                 {weblog?.pinnedPublication?.data?.attributes.summary}
-                                            </p>
+                                            </p>md
 
                                         </div >
                                     </div >
@@ -113,7 +122,7 @@ export default function Home({ weblog, blogs, matchingBlogIndex, researchTags }:
                                                             <div className="background"></div>
                                                             <Image
                                                                 className="w-100"
-                                                                src={blog?.attributes?.headerImage?.data?.attributes?.url ? `${STRAPI_API_URL}${blog.attributes.headerImage.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
+                                                                src={blog?.attributes?.headerImage?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL}${blog.attributes.headerImage.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
                                                                 width={blog?.attributes?.headerImage?.data?.attributes?.width || 600}
                                                                 height={blog?.attributes?.headerImage?.data?.attributes?.height || 400}
                                                                 alt="IMAGE"
@@ -131,7 +140,7 @@ export default function Home({ weblog, blogs, matchingBlogIndex, researchTags }:
                                                                         {blog?.attributes.authors?.data?.map((author, index) => (
                                                                             <span key={index}>
                                                                                 {author.attributes.name}
-                                                                                {index < (matchingBlog.attributes.authors?.data?.length ?? 0) - 1 && ", "}
+                                                                                {index < (matchingBlog?.attributes?.authors?.data?.length ?? 0) - 1 && ", "}
                                                                             </span>
                                                                         ))}
                                                                     </>
@@ -204,7 +213,7 @@ export default function Home({ weblog, blogs, matchingBlogIndex, researchTags }:
 export async function getStaticProps() {
     try {
         logger.info('================building home page================');
-        logger.info(`API URL: ${process.env.STRAPI_API_URL}`);
+        logger.info(`API URL: ${process.env.NEXT_PUBLIC_API_URL}`);
 
         logger.info('Fetching home page data...');
         const homeresponse = await apiClient.get("/api/home-p?populate=*");
@@ -226,7 +235,7 @@ export async function getStaticProps() {
         const blogs = blogresponse?.data?.data;
         const researchTags = tagsresponse?.data?.data;
 
-        const matchingBlogIndex = blogs.findIndex((blog: Blog) => blog.id === weblog.pinnedPublication.data.id);
+        const matchingBlogIndex = blogs.findIndex((blog: Blog) => blog.id === weblog.pinnedPublication?.data?.id);
 
         return {
             props: {

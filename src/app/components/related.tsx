@@ -9,7 +9,7 @@ interface ListProps {
     blogs?: Blog[];
     events?: Event[];
     infographics?: Infographic[];
-    STRAPI_API_URL: string;
+    NEXT_PUBLIC_API_URL: string;
 }
 
 // Type Guards
@@ -17,7 +17,7 @@ const isBlog = (item: any): item is Blog => 'headerImage' in item.attributes;
 const isEvent = (item: any): item is Event => 'headerImage' in item.attributes;
 const isResearch = (item: any): item is Research => 'infographics' in item.attributes;
 
-const Related = ({ blogs, events, infographics, STRAPI_API_URL }: ListProps) => {
+const Related = ({ blogs, events, infographics, NEXT_PUBLIC_API_URL }: ListProps) => {
     // Determine the type of content
     const isBlogContent = !!blogs;
     const isEventContent = !!events;
@@ -37,7 +37,7 @@ const Related = ({ blogs, events, infographics, STRAPI_API_URL }: ListProps) => 
                             {isBlog(item) || isEvent(item) ? (
                                 <Image
                                     className="card-img-top"
-                                    src={item?.attributes?.headerImage?.data?.attributes?.url ? `${STRAPI_API_URL}${item.attributes.headerImage.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
+                                    src={item?.attributes?.headerImage?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL}${item.attributes.headerImage.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
                                     width={item?.attributes?.headerImage?.data?.attributes?.width || 600}
                                     height={item?.attributes?.headerImage?.data?.attributes?.height || 400}
                                     alt={item?.attributes?.headerImage?.data?.attributes?.alternativeText || 'Default Alt Text'}
@@ -46,7 +46,7 @@ const Related = ({ blogs, events, infographics, STRAPI_API_URL }: ListProps) => 
                             ) : isResearch(item) ? (
                                 <Image
                                     className="card-img-top"
-                                    src={item?.attributes?.infographics?.data?.attributes?.url ? `${STRAPI_API_URL}${item.attributes.infographics.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
+                                    src={item?.attributes?.infographics?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL}${item.attributes.infographics.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
                                     width={item?.attributes?.infographics?.data?.attributes?.width || 600}
                                     height={item?.attributes?.infographics?.data?.attributes?.height || 400}
                                     alt={item?.attributes?.infographics?.data?.attributes?.alternativeText || 'Default Alt Text'}

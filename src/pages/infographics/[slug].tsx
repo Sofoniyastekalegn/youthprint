@@ -8,7 +8,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { Research, ResearchProps } from '../../interface/research';
 import Link from 'next/link';
 import Related from '@/app/components/related';
-import { STRAPI_API_URL } from "../../app/components/config"
+import { NEXT_PUBLIC_API_URL } from "../../app/components/config"
 import { Infographic, InfographicProps } from '@/interface/infographics';
 import Head from 'next/head';
 import { info } from 'console';
@@ -42,7 +42,7 @@ export default function Infographics({ infographic, allInfographics }: Infograph
                                 <p className="mb-4">Published on {infographic?.attributes.date}</p>
                                 <Image
                                     className="cars-img-top"
-                                    src={infographic?.attributes?.infographics?.data?.attributes?.url ? `${STRAPI_API_URL}${infographic.attributes.infographics.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
+                                    src={infographic?.attributes?.infographics?.data?.attributes?.url ? `${NEXT_PUBLIC_API_URL}${infographic.attributes.infographics.data.attributes.url}` : '/path/to/placeholder-image.jpg'}
                                     width={infographic?.attributes?.infographics?.data?.attributes?.width || '1301'}
                                     height={infographic?.attributes?.infographics?.data?.attributes?.height || '1301'}
                                     alt="..."
@@ -66,7 +66,7 @@ export default function Infographics({ infographic, allInfographics }: Infograph
                                 </Link>
                             ))}
                         </div>
-                        <Related infographics={relatedInfographics} STRAPI_API_URL={STRAPI_API_URL || ''} />
+                        <Related infographics={relatedInfographics} NEXT_PUBLIC_API_URL={NEXT_PUBLIC_API_URL || ''} />
                     </div>
                 </div>
             </div></>

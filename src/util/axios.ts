@@ -9,7 +9,7 @@ const authToken = process.env.OCP_APIM_SUBSCRIPTION_KEY;
 
 export const apiClient = axios.create({
 
-  baseURL: process.env.STRAPI_API_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, GET, OPTIONS, PUT",

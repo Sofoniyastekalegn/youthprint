@@ -3,11 +3,14 @@ import Image from "next/image";
 import Link from 'next/link';
 import { apiClient } from '../util/axios';
 import { EventlistProps } from "@/interface/events";
-import {STRAPI_API_URL} from "../app/components/config"
+import {NEXT_PUBLIC_API_URL} from "../app/components/config"
 import { BlogPageProps } from '@/interface/blog';
 import ItemList from '@/app/components/ItemList';
 
+
+
 export default function Events({ allBlogs }: BlogPageProps) {
+
 
   const [visibleEvents, setVisibleEvents] = useState(3);
 
@@ -20,9 +23,9 @@ export default function Events({ allBlogs }: BlogPageProps) {
   }
 
   return (
-    <div className="body-container">
+    <div className="content-container">
       <div className="content-banner">
-        <h5 className=" mb-4"> Blogs </h5>
+        <h5 className=" pt-5 mb-4"> Blogs </h5>
       </div>
 
       <ItemList items={allBlogs} baseLink="/blog" initialVisibleItems={4} />

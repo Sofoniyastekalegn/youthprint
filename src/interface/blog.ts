@@ -9,6 +9,7 @@ export interface BlogAttributes {
     title: string;
     authors : stafflist;
     summary: string;
+    pinnedBlogs: bloginfo;
     date: string;
     headerImage: mediainfo;
     content : BlocksContent;

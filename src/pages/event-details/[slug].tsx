@@ -9,7 +9,7 @@ import DevelopmentPartners from '@/app/components/partners';
 import Related from '@/app/components/related'; // Import the related content component
 import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-import { STRAPI_API_URL } from "../../app/components/config";
+import { NEXT_PUBLIC_API_URL } from "../../app/components/config";
 import * as Yup from 'yup'; // Import Yup here
 import { error } from 'console';
 import Head from 'next/head';
@@ -114,7 +114,7 @@ export default function Eventdetails({ event, relatedEvents }: EventProps) {
             <div className="body-container">
                 <div className="container-wide">
                     <div className="img-container img-container-large fadeInOpacity active"
-                        style={{ backgroundImage: `url(${STRAPI_API_URL}${event?.attributes.headerImage.data.attributes.url})` }} >
+                        style={{ backgroundImage: `url(${NEXT_PUBLIC_API_URL}${event?.attributes.headerImage.data.attributes.url})` }} >
                     </div>
                 </div>
                 <div className="container-full">
@@ -272,7 +272,7 @@ export default function Eventdetails({ event, relatedEvents }: EventProps) {
                             </Link>
                         ))}
                     </div>
-                    <Related events={relatedEvents} STRAPI_API_URL={STRAPI_API_URL || ''} />
+                    <Related events={relatedEvents} NEXT_PUBLIC_API_URL={NEXT_PUBLIC_API_URL || ''} />
                 </div>
             </div></>
     );

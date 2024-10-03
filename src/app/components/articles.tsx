@@ -10,7 +10,7 @@ interface ArticleContentProps {
   summary?: string;
 }
 
-const STRAPI_API_URL = process.env.STRAPI_API_URL;
+const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const ArticleContent: React.FC<ArticleContentProps> = ({ content, title, summary }) => {
   return (
@@ -28,7 +28,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ content, title, summary
               </blockquote>
             ),
             image: ({ image }) => {
-              const imageUrl = image?.url ? `${STRAPI_API_URL}${image.url}` : '';
+              const imageUrl = image?.url ? `${NEXT_PUBLIC_API_URL}${image.url}` : '';
               return (
                 <table style={{ width: '100%', maxWidth: '550px', marginLeft: 'auto', marginRight: 'auto', height: 'auto' }} cellSpacing="5" cellPadding="5">
                   <tbody>

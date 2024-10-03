@@ -4,6 +4,8 @@ import RootLayout from '../app/layout'
 import { ResearchTagsProvider } from '@/app/contexts/ResearchTagsContext'
 import Head from 'next/head'
 import Image from 'next/image'
+import App from 'next/app'
+import { apiClient } from '@/util/axios'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,21 +16,26 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/icon.ico"/>
       </Head>
       <RootLayout>
-        <div className="blog-header">
-          <Image 
-            src="/blog-image.jpg" 
-            alt="The Youth Print Banner" 
-            width={1200} 
-            height={400} 
-            layout="responsive"
-          />
-          <h1 className="blog-title">Welcome to The Youth Print</h1>
-          <p className="blog-description">Empowering young voices, one story at a time.</p>
-        </div>
+      
         <Component {...pageProps} />
       </RootLayout>
     </ResearchTagsProvider>
   )
 }
+
+MyApp.getInitialProps = async (appContext: any) => {
+  const appProps = await App.getInitialProps(appContext);
+
+  // Fetch research tags from the API
+  let researchTags = [];
+  try {
+    const tagsResponse = await apiClient.get("/api/research-tags?populate=*");
+    researchTags = tagsResponse.data.data; // Adjust based on your API response structure
+  } catch (error) {
+    console.error("Failed to fetch research tags:", error);
+  }
+
+  return { ...appProps, pageProps: { ...appProps.pageProps, researchTags } };
+};
 
 export default MyApp
