@@ -7,7 +7,7 @@ import {NEXT_PUBLIC_API_URL} from "../app/components/config"
 import { BlogPageProps } from '@/interface/blog';
 import ItemList from '@/app/components/ItemList';
 
-export default function Events({ allBlogs }: BlogPageProps) {
+export default function Events({ allBlogs, pinnedBlogs }: BlogPageProps) {
 
   const [visibleEvents, setVisibleEvents] = useState(3);
 
@@ -24,6 +24,14 @@ export default function Events({ allBlogs }: BlogPageProps) {
       <div className="content-banner">
         <h5 className=" mb-4"> Blogs </h5>
       </div>
+      {pinnedBlogs && pinnedBlogs.length > 0 && (
+        <div className="pinned-blogs">
+          <h5>pinned-Blogs</h5>
+          <ItemList items={pinnedBlogs} baselink="/blog" initialVisibleItems={4} />
+          </div>
+          
+      )}
+
 
       <ItemList items={allBlogs} baseLink="/blog" initialVisibleItems={4} />
     </div>
@@ -33,11 +41,16 @@ export default function Events({ allBlogs }: BlogPageProps) {
 export async function getStaticProps() {
   try {
     const response = await apiClient.get("/api/blogs?sort[0]=date:desc&populate=*");
-    const allBlogs = response?.data?.data;
 
+    const allBlogs = response?.data?.data;
+    const pinnedBlogsResponse = await apiClient.get("/api/blogs?pinned=true&populate=*");
+
+
+    const pinnedBlogs = response?.data?.data;
+    
     return {
       props: {
-        allBlogs,
+        allBlogs, pinnedBlogs
       },
       revalidate: 10,
     };
@@ -46,6 +59,7 @@ export async function getStaticProps() {
     return {
       props: {
         allBlogs: [],
+        pinnedBlogs: [],
       },
     };
   }
